@@ -355,7 +355,7 @@ class PGImageTool(pg.GraphicsLayoutWidget):
             pos = np.array([x.value for x in self.cursor.pos])
             pos[i] = mousepnt.x()
             pos[j] = mousepnt.y()
-            idx = np.round((pos - self.data.coord_min)/self.data.delta).astype(np.int)
+            idx = np.round((pos - self.data.coord_min)/self.data.delta).astype(int)
             if self.data.ndim == 2:
                 self.status_bar = "{0:#.3g} : x = {1:#.3g}, y = {2:#.3g} [{3:d},{4:d}]".format(self.data.values[tuple(idx)], *tuple(pos), *tuple(idx))
             elif self.data.ndim == 3:
@@ -364,7 +364,7 @@ class PGImageTool(pg.GraphicsLayoutWidget):
                 self.status_bar = "{0:#.3g} : x = {1:#.3g}, y = {2:#.3g}, z = {3:#.3g}, t = {4:#.4g} [{5:d},{6:d},{7:d},{8:d}]".format(self.data.values[tuple(idx)], *tuple(pos), *tuple(idx))
             else:
                 raise RuntimeError("The data ndim for an image is not 2, 3, or 4")
-            self.mouse_hover.emit(self.status_bar)
+            self.mouse_hover.emit(self.status_bar)~
             if self.shift_down:
                 self.set_crosshair_to_mouse()
 
